@@ -3,22 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Datetime superapp</title>
+    <title>Datetime app</title>
+    <link
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js" type="module"></script>
   </head>
 
   <body>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Date calc</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Timer</a>
+      </li>
+    </ul>
+
     <form id="datecalc">
-      <h3>Калькулятор дат</h3>
+      <h3>Date calc</h3>
       <label>
-        <strong>Первая дата:</strong>
+        <strong>Start date:</strong>
         <input type="date" name="firstDate" />
       </label>
       <label>
-        <strong>Вторая дата:</strong>
+        <strong>End date:</strong>
         <input type="date" name="secondDate" />
       </label>
-      <button type="submit">Расчитать промежуток</button>
+      <button type="submit">Calc delta</button>
       <p id="datecalc__result"></p>
     </form>
   </body>
