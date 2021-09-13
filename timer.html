@@ -14,7 +14,6 @@
     <script src="js/load.js"></script>
 
     <script defer src="js/timer.js"></script>
-    <!-- остальной код -->
   </head>
 
   <body>
@@ -26,6 +25,7 @@
           class="form-control form-control-lg p-2 mb-5 mt-5"
           type="text"
           placeholder="Enter amount of seconds"
+          id="input-timer"
         />
       </div>
 
@@ -34,13 +34,18 @@
           <div
             class="progress-bar bg-success"
             role="progressbar"
-            style="width: 25%"
+            style="width: 100%"
+            id="progress-timer"
           ></div>
         </div>
 
         <div class="buttons d-flex justify-content-evenly w-50">
-          <button type="button" class="btn btn-success">Start</button>
-          <button type="button" class="btn btn-danger">Stop</button>
+          <button type="button" class="btn btn-success" id="btn-start">
+            Start
+          </button>
+          <button type="button" class="btn btn-danger" id="btn-stop">
+            Stop
+          </button>
         </div>
       </div>
     </div>
