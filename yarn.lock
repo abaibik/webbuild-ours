@@ -7,6 +7,11 @@ bootstrap@^5.1.1:
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.1.1.tgz#9d6eed81e08feaccedf3adaca51fe4b73a2871df"
   integrity sha512-/jUa4sSuDZWlDLQ1gwQQR8uoYSvLJzDd8m5o6bPKh3asLAMYVZKdRCjb1joUd5WXf0WwCNzd2EjwQQhupou0dA==
 
+howler@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.2.3.tgz#a2eff9b08b586798e7a2ee17a602a90df28715da"
+  integrity sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg==
+
 luxon@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-2.0.2.tgz#11f2cd4a11655fdf92e076b5782d7ede5bcdd133"

@@ -1,60 +1,72 @@
+// import { Howl, Howler } from "../node_modules/howler/dist/howler.min.js";
+// const { Howl, Howler } = require("../node_modules/howler/dist/howler.min.js");
+
 loadScript("js/common.js", () => {
   console.log("timer.js ");
 });
 
-class Timer {
-  constructor(renderCallback) {
-    this.renderCallback = renderCallback;
-    this.intervalHandler = this.intervalHandler.bind(this);
-    this.stop = this.stop.bind(this);
-  }
-
-  start(timeout) {
-    if (this.timer) {
-      return;
+loadScript("node_modules/howler/dist/howler.min.js", () => {
+  class Timer {
+    constructor(renderCallback) {
+      this.renderCallback = renderCallback;
+      this.intervalHandler = this.intervalHandler.bind(this);
+      this.stop = this.stop.bind(this);
     }
-    this.timeout = timeout;
-    this.secondsLeft = timeout;
-    this.timer = setInterval(this.intervalHandler, 1000);
-    this.renderSecondsLeft();
-  }
-  stop() {
-    clearInterval(this.timer);
-    this.timer = undefined;
-  }
-  intervalHandler() {
-    this.secondsLeft -= 1;
-    this.renderSecondsLeft();
-    if (this.secondsLeft === 0) {
-      this.stop();
+
+    start(timeout) {
+      if (this.timer) {
+        return;
+      }
+      this.timeout = timeout;
+      this.secondsLeft = timeout;
+      this.timer = setInterval(this.intervalHandler, 1000);
+      this.renderSecondsLeft();
+    }
+    stop() {
+      clearInterval(this.timer);
+      this.timer = undefined;
+    }
+    intervalHandler() {
+      this.secondsLeft -= 1;
+      this.renderSecondsLeft();
+      if (this.secondsLeft === 0) {
+        this.stop();
+      }
+    }
+    renderSecondsLeft() {
+      this.renderCallback(this.secondsLeft, this.timeout);
     }
   }
-  renderSecondsLeft() {
-    this.renderCallback(this.secondsLeft, this.timeout);
+
+  const buttonStart = document.getElementById("btn-start");
+  const buttonStop = document.getElementById("btn-stop");
+  const progressTimer = document.getElementById("progress-timer");
+  const inputTimer = document.getElementById("input-timer");
+
+  const timer = new Timer((secondsLeft, total) => {
+    progressTimer.innerHTML = secondsLeft;
+    const percent = (secondsLeft / total) * 100;
+    progressTimer.style = `width: ${percent}%`;
+    if (secondsLeft === 0) {
+      const sound = new Howl({
+        src: ["/media/Twin-bell-alarm-clock.mp3"],
+      });
+
+      sound.play();
+    }
+  });
+
+  function run() {
+    const timeout = parseInt(inputTimer.value);
+    timer.start(timeout);
   }
-}
 
-const buttonStart = document.getElementById("btn-start");
-const buttonStop = document.getElementById("btn-stop");
-const progressTimer = document.getElementById("progress-timer");
-const inputTimer = document.getElementById("input-timer");
+  buttonStart.addEventListener("click", run);
+  inputTimer.addEventListener("keydown", (e) => {
+    if (["Enter", "NumpadEnter"].includes(e.code)) {
+      run();
+    }
+  });
 
-const timer = new Timer((secondsLeft, total) => {
-  progressTimer.innerHTML = secondsLeft;
-  const percent = (secondsLeft / total) * 100;
-  progressTimer.style = `width: ${percent}%`;
+  buttonStop.addEventListener("click", timer.stop);
 });
-
-function run() {
-  const timeout = parseInt(inputTimer.value);
-  timer.start(timeout);
-}
-
-buttonStart.addEventListener("click", run);
-inputTimer.addEventListener("keydown", (e) => {
-  if (["Enter", "NumpadEnter"].includes(e.code)) {
-    run();
-  }
-});
-
-buttonStop.addEventListener("click", timer.stop);
