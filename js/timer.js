@@ -1,9 +1,9 @@
 import { Howl, Howler } from "howler";
 import "bootstrap/dist/css/bootstrap.min.css";
-import swithTabs from "./switch.js";
+import switchTabs from "./switch.js";
 import soundFile from "../media/Twin-bell-alarm-clock.mp3";
 
-swithTabs("#tabs");
+switchTabs("#tabs");
 
 class Timer {
   constructor(renderCallback) {

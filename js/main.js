@@ -2,9 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { diffDates, diffToHtml } from "./datecalc.js";
 import { formatError } from "./utils.js";
-import swithTabs from "./switch.js";
+import switchTabs from "./switch.js";
 
-swithTabs("#tabs");
+switchTabs("#tabs");
 
 const dateCalcForm = document.getElementById("datecalc");
 const dateCalcResult = document.getElementById("datecalc__result");
