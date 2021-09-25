@@ -1,4 +1,4 @@
-export default function swithTabs(selector) {
+export default function switchTabs(selector) {
   let indexActive = "";
   let timerActive = "";
   if (window.location.href.endsWith("timer.html")) {
